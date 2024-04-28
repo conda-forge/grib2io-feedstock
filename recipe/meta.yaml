@@ -1,5 +1,5 @@
 {% set name = "grib2io" %}
-{% set version = "2.2.0" %}
+{% set version = "2.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/grib2io-{{ version }}.tar.gz
-  sha256: b75625eb93846147704c710e841a39d467d7695f0c946acb8e99cd81d344dc7d
+  sha256: 42a0365aac4884060a4283b65705c8db1a191af13dcbc1c5f040b2522548207e
 
 build:
   skip: true  # [win or py<38]
@@ -21,6 +21,7 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - nceplibs-g2c
   host:
     - python
