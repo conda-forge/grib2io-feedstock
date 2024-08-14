@@ -1,5 +1,5 @@
 {% set name = "grib2io" %}
-{% set version = "2.2.5" %}
+{% set version = "2.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/grib2io-{{ version }}.tar.gz
-  sha256: 93d8d0db668d46fbaf5fe3ecf75c5c2c77f42d36e04515738e24ef3afaaccbcf
+  sha256: 06d84789325b4779d06f6a7fdc10b87a1f45ddb7aab7379eb18f52ec4be18bcf
 
 build:
   skip: true  # [win or py<38]
