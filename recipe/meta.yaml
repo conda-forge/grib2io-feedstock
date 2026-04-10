@@ -6,12 +6,12 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/grib2io-{{ version }}.tar.gz
-  sha256: eda64382d589c50e421f414534490ae46e3600d27c4ea78929248276b8bb47fc
+  url: https://github.com/NOAA-MDL/grib2io/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 1b67955bb9a61786148f2ae8d035a766e489ebaa84797996a973767b658e6446
 
 build:
   skip: true  # [win or py<38]
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -54,5 +54,4 @@ about:
 
 extra:
   recipe-maintainers:
-    - TimothyCera-NOAA
     - EricEngle-NOAA
