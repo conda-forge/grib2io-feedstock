@@ -1,5 +1,5 @@
 {% set name = "grib2io" %}
-{% set version = "2.7.0" %}
+{% set version = "2.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,33 +7,36 @@ package:
 
 source:
   url: https://github.com/NOAA-MDL/grib2io/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 1b67955bb9a61786148f2ae8d035a766e489ebaa84797996a973767b658e6446
+  sha256: d719fb71c36ad80a1a3429f598e59df6a55059dc7025c52fd054cc7490453c54
 
 build:
   skip: true  # [win or py<38]
-  number: 1
-  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.define.GRIB2IO_WITH_IP=ON --config-settings=cmake.args=-GNinja"
 
 requirements:
   build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython                                 # [build_platform != target_platform]
-    - numpy                                  # [build_platform != target_platform]
-    - {{ compiler('c') }}
+    - {{ compiler("c") }}
     - {{ stdlib("c") }}
-    - nceplibs-g2c
-    - nceplibs-ip >=5.1.0
+    - cmake
+    - ninja
+    - python                              # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+    - cython                              # [build_platform != target_platform]
+    - numpy                               # [build_platform != target_platform]
+
   host:
     - python
-    - cython >=0.29.16
-    - setuptools >=61.0
-    - numpy
     - pip
+    - scikit-build-core
+    - cython
+    - numpy
     - nceplibs-g2c
     - nceplibs-ip >=5.1.0
+
   run:
     - python
+    - numpy
     - pyproj
     - nceplibs-g2c
     - nceplibs-ip >=5.1.0
