@@ -1,5 +1,5 @@
 {% set name = "grib2io" %}
-{% set version = "2.8.0" %}
+{% set version = "2.8.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/NOAA-MDL/grib2io/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: d719fb71c36ad80a1a3429f598e59df6a55059dc7025c52fd054cc7490453c54
+  sha256: 0376a1229354114b0c45304c8fba2b514c9d8ddcc364624c3fe95450dbee1c12
 
 build:
   skip: true  # [win or py<38]
