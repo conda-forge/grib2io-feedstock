@@ -11,7 +11,7 @@ source:
 
 build:
   skip: true  # [win or py<38]
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.define.GRIB2IO_WITH_IP=ON --config-settings=cmake.args=-GNinja"
 
 requirements:
