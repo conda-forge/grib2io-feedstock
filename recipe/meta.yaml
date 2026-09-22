@@ -1,5 +1,5 @@
 {% set name = "grib2io" %}
-{% set version = "2.8.1" %}
+{% set version = "2.8.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/NOAA-MDL/grib2io/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 0376a1229354114b0c45304c8fba2b514c9d8ddcc364624c3fe95450dbee1c12
+  sha256: 49bf52c47eea213463724c909370c7b1f804602524f9cbde4ff9ff5ce79109ab
 
 build:
   skip: true  # [win or py<38]
-  number: 1
+  number: 0
   script: "{{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --config-settings=cmake.define.GRIB2IO_WITH_IP=ON --config-settings=cmake.args=-GNinja"
 
 requirements:
